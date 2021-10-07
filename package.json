@@ -13,5 +13,9 @@
     "email": "misakisaysyes@gmail.com",
     "url": "https://misakisaysyes.github.io/"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misakisaysyes/hexo-codepen-snippet.git"
+  },
   "license": "MIT"
 }
