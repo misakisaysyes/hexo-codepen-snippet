@@ -1,0 +1,17 @@
+{
+  "name": "hexo-codepen-snippet",
+  "version": "0.0.1",
+  "main": "index.js",
+  "keywords": [
+    "hexo",
+    "plugin",
+    "codepen",
+    "snippet"
+  ],
+  "author": {
+    "name": "misakisaysyes",
+    "email": "misakisaysyes@gmail.com",
+    "url": "https://misakisaysyes.github.io/"
+  },
+  "license": "MIT"
+}
