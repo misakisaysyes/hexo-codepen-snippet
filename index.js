@@ -1,5 +1,4 @@
 /* global hexo */
-
 hexo.extend.tag.register('codepen', (args) => {
     // 内置默认配置
     const default_config = {
