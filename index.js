@@ -30,7 +30,7 @@ hexo.extend.tag.register('codepen', (args) => {
 
     return `<iframe 
                 src="${src_prefix}/${slug_hash}?default-tab=${default_tab}&theme-id=${theme_id}" 
-                style=${style} 
+                style="${style}"
                 scrolling=${scrolling} 
                 frameborder=${frameborder} 
                 loading=${loading}

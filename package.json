@@ -17,5 +17,10 @@
     "type": "git",
     "url": "git+https://github.com/misakisaysyes/hexo-codepen-snippet.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "semantic-release": "^18.0.0"
+  }
 }
