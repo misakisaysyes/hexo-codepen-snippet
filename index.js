@@ -17,16 +17,18 @@ hexo.extend.tag.register('codepen', (args) => {
         config[buf[0]] = buf[1]
     })
 
-    const { src_prefix, 
-            slug_hash, 
-            default_tab, 
-            theme_id, 
-            style, 
-            scrolling, 
-            frameborder, 
-            loading, 
-            allowtransparency, 
-            allowfullscreen } = config
+    const { 
+        src_prefix, 
+        slug_hash, 
+        default_tab, 
+        theme_id, 
+        style, 
+        scrolling, 
+        frameborder, 
+        loading, 
+        allowtransparency, 
+        allowfullscreen 
+    } = config
 
     return `<iframe 
                 src="${src_prefix}/${slug_hash}?default-tab=${default_tab}&theme-id=${theme_id}" 
