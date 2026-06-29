@@ -1,23 +1,60 @@
+# =============================================================================
+# GitHub Actions 自动化发布工作流
+# =============================================================================
+# 当代码推送到 master 分支时，自动运行 semantic-release 完成：
+#   1. 分析 commit 决定版本号
+#   2. 生成 Release Notes 并更新 CHANGELOG.md
+#   3. 发布到 npm registry
+#   4. 在 GitHub 创建 Release
+#
+# 触发条件：push 到 master 分支
+# =============================================================================
 name: Release
+
 on:
   push:
     branches:
-      - master
+      - master                 # 只在 master 分支 push 时触发
+
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest     # 使用 Ubuntu 最新版作为运行环境
+
     steps:
+      # -----------------------------------------------------------------------
+      # Step 1：检出代码
+      #   fetch-depth: 0 表示拉取完整 git 历史，semantic-release 需要完整的
+      #   commit 历史来分析上一个版本以来的所有 commit message。
+      # -----------------------------------------------------------------------
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      # -----------------------------------------------------------------------
+      # Step 2：安装 Node.js
+      #   lts/* 表示使用最新的 LTS（长期支持）版本
+      # -----------------------------------------------------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
+
+      # -----------------------------------------------------------------------
+      # Step 3：安装项目依赖
+      #   npm ci 比 npm install 更快更严格，专为 CI 环境设计：
+      #   - 严格按照 package-lock.json 安装，不更新版本
+      #   - 安装前自动清理 node_modules，确保干净环境
+      # -----------------------------------------------------------------------
       - name: Install dependencies
         run: npm ci
+
+      # -----------------------------------------------------------------------
+      # Step 4：执行 semantic-release 发布
+      #   GITHUB_TOKEN：GitHub 自动生成的 token，用于创建 Release 和 push commit
+      #   NPM_TOKEN：需要在 GitHub Secrets 中配置，用于发布到 npm registry
+      # -----------------------------------------------------------------------
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
