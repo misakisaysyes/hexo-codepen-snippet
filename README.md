@@ -10,8 +10,17 @@
 {% codepen [配置名1]:[值1] [配置名2]:[值2] %}
 
 // eg
-{% codepen slug_hash:xxxx theme_id:js %}
+{% codepen slug_hash:xxxx theme_id:light %}
 ```
+
+例如，显示深色主题的 JS 与运行结果双栏，嵌入高度为 300px：
+
+```
+{% codepen slug_hash:qBrgwwP default_tab:js,result theme_id:dark height:300 %}
+```
+
+`height`、`width` 可以写数字（按 px 处理）或 CSS 长度值，如 `height:50vh`、`width:80%`。
+标签生成 iframe；CodePen 嵌入窗口中选择的「HTML (Recommended)」会使用脚本生成 iframe，配置效果相同。
 
 ### 所有配置项
 |配置名|值|
@@ -21,6 +30,8 @@
 |default_tab|具体见codepen|
 |theme_id |具体见codepen|
 |style|html内联css样式|
+|height|iframe高度，覆盖style中的height|
+|width|iframe宽度，覆盖style中的width|
 |scrolling|见iframe标签属性|
 |frameborder|见iframe标签属性|
 |loading|见iframe标签属性|
@@ -71,4 +82,3 @@
         allowfullscreen: 'true'
     }
 ```
-
